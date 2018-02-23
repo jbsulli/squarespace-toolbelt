@@ -230,6 +230,7 @@ class FileManager {
       }
     }
     const { filePath, relPath, moduleName } = file;
+    relPath = relPath.replace(this.srcDir, ''); // Sometimes relPath returns full path to source dir
     const isModConf = filePath.indexOf('conf') >= 0 && moduleName;
     let destPath = path.join(this.buildDir, relPath);
     const srcFileExists = fs.existsSync(filePath);
